@@ -22,5 +22,5 @@ mongoose.connect(process.env.MONGO_URI)
 
 
 app.listen(PORT,()=>{
-    console.log(`Server run in https://localhost:${PORT}`)
+    console.log(`Server run in http://localhost:${PORT}`)
 })
