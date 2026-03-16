@@ -10,8 +10,3 @@ router.delete('/:id',deleteLaucher)
 
 export default router
 
-// "city":"iran"
-// "rocketType":Shahab3
-// "latitude" :45
-// "longitude" :52
-// "name":"haminay"
