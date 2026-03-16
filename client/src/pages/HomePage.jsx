@@ -33,14 +33,15 @@ function HomePage() {
         .filter((l) => l.city.toLowerCase().includes(search.toLowerCase()))
         .filter((l) => (filter ? l.rocketType === filter : true))
 
-    if (loading) return <p>Loadinf...</p>
-    if (error) return <p>{error}</p>
+    if (loading) return <p>Loading...</p>
+    if (error) return <p className="error">{error}</p>
     return (
         <div className="home-container">
             <h1>Launchers</h1>
             <input
                 type="text"
                 value={search}
+                placeholder="Search By city ..."
                 onChange={(e) => setSearch(e.target.value)}
             />
             <select value={filter} onChange={(e) => setFilter(e.target.value)}>

@@ -39,7 +39,7 @@ function LauncherDetailsPage() {
         }
     }
     if (loading) return <p>Loading...</p>
-    if (error) return <p>{error}</p>
+    if (error) return <p className="error">{error}</p>
     if (!launcher) return <p>Launcher not found.</p>
     return (
         <div className="detail-contenair">
@@ -50,7 +50,7 @@ function LauncherDetailsPage() {
             <p>Latitude : <strong>{launcher.latitude}</strong></p>
             <p>Longitude : <strong>{launcher.longitude}</strong></p>
             </div>
-            <button onClick={handleDelete}>Delete</button>
+            <button className="btn-delete" onClick={handleDelete}>Delete</button>
         </div>
     )
 

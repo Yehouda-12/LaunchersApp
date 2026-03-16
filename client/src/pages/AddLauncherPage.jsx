@@ -25,6 +25,13 @@ function AddlauncherPage() {
         try {
             setLoading(true)
             setError('')
+            setForm({
+                name: "",
+                city: '',
+                rocketType: '',
+                latitude: '',
+                longitude: ''
+            })
             await createLauncher({ ...form })
 
         } catch (err) {
@@ -34,6 +41,7 @@ function AddlauncherPage() {
             setLoading(false)
         }
     }
+    if (error) return <p className="error">{error}</p>
     return (
         <div className="add-container">
             <h1>Add Launcher</h1>
@@ -66,11 +74,11 @@ function AddlauncherPage() {
                         value={form.rocketType}
                         onChange={handleChange}
                         required >
-                            <option value="">Choose type</option>
-                           {rocket.map((type)=>(
+                        <option value="">Choose type</option>
+                        {rocket.map((type) => (
                             <option key={type} value={type}>{type}</option>
-                           ))}
-                        </select>
+                        ))}
+                    </select>
                 </div>
                 <div>
                     <label >Latitude</label>
@@ -91,7 +99,7 @@ function AddlauncherPage() {
                         required />
                 </div>
                 <button type="submit" >
-                    {loading ? "Add in run ..." : 'Add Lancher'}
+                    {loading ? "Add in run ..." : 'Add Launcher'}
                 </button>
 
             </form>
