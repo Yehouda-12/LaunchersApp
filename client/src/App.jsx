@@ -15,6 +15,7 @@ function App() {
     <Routes>
       <Route path='/' element={<HomePage/>}/>
       <Route path='/add' element={<AddlauncherPage/>}/>
+      <Route path='/launcher/:id/edit' element={<AddlauncherPage/>}/>
       <Route path='/launcher/:id' element={<LauncherDetailsPage/>}/>
     </Routes>
     </BrowserRouter>

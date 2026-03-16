@@ -96,6 +96,14 @@ tr:last-child td{
     margin: 5px auto;
   
 }
+.btn-update{
+     border-radius: 10px;
+    margin-top: 10px;
+    width: 20%;
+    margin: 5px auto;
+    background-color: green;
+
+}
 .btn-delete:hover{
     background-color: red;
 }

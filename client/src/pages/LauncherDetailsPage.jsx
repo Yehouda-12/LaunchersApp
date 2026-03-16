@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import { deleteLauncher, getLauncherById } from "../services/launcherService";
-
+import {Link} from "react-router"
 function LauncherDetailsPage() {
     const { id } = useParams()
     const navigate = useNavigate()
@@ -52,6 +52,10 @@ function LauncherDetailsPage() {
             <p>Longitude : <strong>{launcher.longitude}</strong></p>
             </div>
             <button className="btn-delete" onClick={handleDelete}>Delete</button>
+            <Link to={`/launcher/${id}/edit`}>
+            <button className="btn-update">Update</button>
+            </Link>
+
         </div>
     )
 

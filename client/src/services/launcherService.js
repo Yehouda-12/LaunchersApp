@@ -19,3 +19,8 @@ export const deleteLauncher = async (id)=>{
     const res = await api.delete(`/api/launchers/${id}`)
     return res.data
 }
+
+export const updateLauncher = async (id,data)=>{
+    const res = await api.put(`/launchers/${id}`,data)
+    return res.data
+}

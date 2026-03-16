@@ -44,3 +44,21 @@ export const deleteLaucher = async (req,res)=>{
         
     }
 }
+export const updateLauncher = async (req,res)=>{
+    try {
+        const launcher = await Launcher.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            {new:true,runValidators:true}
+
+        )
+        if(!launcher){
+            return res.status(404).json({message:"launcher not found"})
+        }
+         res.status(200).json(launcher)
+        
+    } catch (error) {
+         res.status(500).json({message:error.message})
+
+    }
+}

@@ -1,12 +1,17 @@
 import { useState } from "react";
 
-import { createLauncher } from "../services/launcherService";
+import { createLauncher, getLauncherById, updateLauncher } from "../services/launcherService";
+import { useNavigate, useParams } from "react-router";
+import { useEffect } from "react";
 
 
 const rocket = ['Shahab3', 'Fetah110', 'Radwan', 'Kheibar']
 function AddlauncherPage() {
+    const { id } = useParams()
+    const edit = !!id
+    const navigate = useNavigate()
 
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
     const [form, setForm] = useState({
         name: "",
@@ -17,6 +22,32 @@ function AddlauncherPage() {
 
 
     })
+    useEffect(() => {
+        if (edit) {
+            const fetchLauncher = async () => {
+                try {
+                    setLoading(true)
+                    const data = await getLauncherById(id)
+                    setForm({
+                        name: data.name,
+                        city: data.city,
+                        rocketType: data.rocketType,
+                        latitude: data.latitude,
+                        longitude: data.longitude
+                    })
+
+
+                } catch (error) {
+                    setError('Error loading')
+
+                } finally {
+                    setLoading(false)
+                }
+            }
+            fetchLauncher()
+        }
+    }, [id])
+
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
     }
@@ -25,14 +56,22 @@ function AddlauncherPage() {
         try {
             setLoading(true)
             setError('')
-            setForm({
-                name: "",
-                city: '',
-                rocketType: '',
-                latitude: '',
-                longitude: ''
-            })
-            await createLauncher({ ...form })
+            const payload = { ...form }
+            // setForm({
+            //     name: "",
+            //     city: '',
+            //     rocketType: '',
+            //     latitude: '',
+            //     longitude: ''
+            // })
+            if (edit) {
+                await updateLauncher(id, payload)
+                navigate(`/launcher/${id}`)
+
+            } else {
+                await createLauncher(payload)
+                navigate('/')
+            }
 
         } catch (err) {
             setError('Error in create launcher')
@@ -44,7 +83,7 @@ function AddlauncherPage() {
     if (error) return <p className="error">{error}</p>
     return (
         <div className="add-container">
-            <h1>Add Launcher</h1>
+            <h1>{edit ? 'Update Launcher' : "Add Launcher"}</h1>
             {error && <p>{error}</p>}
 
             <form onSubmit={handleSubmit}>
