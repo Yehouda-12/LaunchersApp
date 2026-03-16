@@ -7,6 +7,7 @@ const launcherSchema = new mongoose.Schema({
     },
     rocketType:{
         type:String,
+        enum:['Shahab3', 'Fetah110', 'Radwan', 'Kheibar'],
         required:[true,"rocketType is required"]
 
     },
@@ -31,9 +32,3 @@ const launcherSchema = new mongoose.Schema({
 const Launcher = mongoose.model('Launcher',launcherSchema)
 export default Launcher
 
-// id
-// city
-// rocketType
-// latitude - number
-// longitude - number
-// name
