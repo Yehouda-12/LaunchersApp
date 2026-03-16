@@ -25,7 +25,7 @@ function AddlauncherPage() {
         try {
             setLoading(true)
             setError('')
-            await createLauncher({ form })
+            await createLauncher({ ...form })
 
         } catch (err) {
             setError('Error in create launcher')
