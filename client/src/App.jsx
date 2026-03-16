@@ -4,12 +4,14 @@ import './App.css'
 import HomePage from './pages/HomePage'
 import AddlauncherPage from './pages/AddLauncherPage'
 import LauncherDetailsPage from './pages/LauncherDetailsPage'
+import Navbar from './components/Navbar'
 
 function App() {
 
 
   return (
     <BrowserRouter>
+    <Navbar/>
     <Routes>
       <Route path='/' element={<HomePage/>}/>
       <Route path='/add' element={<AddlauncherPage/>}/>

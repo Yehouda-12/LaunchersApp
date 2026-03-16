@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router";
-import { getLauncherById } from "../services/launcherService";
+import { useNavigate, useParams } from "react-router";
+import { deleteLauncher, getLauncherById } from "../services/launcherService";
 
 function LauncherDetailsPage() {
     const { id } = useParams()
+    const navigate = useNavigate()
 
     const [launcher, setLauncher] = useState()
     const [loading, setLoading] = useState(true)
@@ -27,17 +28,29 @@ function LauncherDetailsPage() {
         fetchLauncher()
     }, [id])
 
+    const handleDelete = async ()=>{
+        try {
+            await deleteLauncher(id)
+            navigate('/')
 
+        } catch (error) {
+            setError("Error in delete this launcher ")
+            
+        }
+    }
     if (loading) return <p>Loading...</p>
     if (error) return <p>{error}</p>
     if (!launcher) return <p>Launcher not found.</p>
     return (
         <div className="detail-contenair">
+            <div className="card">
             <h1>{launcher.name}</h1>
             <p>City : <strong>{launcher.city}</strong></p>
             <p>Type : <strong>{launcher.rocketType}</strong></p>
             <p>Latitude : <strong>{launcher.latitude}</strong></p>
             <p>Longitude : <strong>{launcher.longitude}</strong></p>
+            </div>
+            <button onClick={handleDelete}>Delete</button>
         </div>
     )
 

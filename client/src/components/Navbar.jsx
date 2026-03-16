@@ -1,7 +1,13 @@
-import { useNavigate } from "react-router";
+import {Link} from "react-router";
 
 
 function Navbar(){
+    return(
+        <nav>
+            <Link to="/">Home</Link>
+            <Link to="/add">➕ Add Launcher</Link>
+        </nav>
+    )
 
 }
 
