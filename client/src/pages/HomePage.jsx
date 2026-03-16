@@ -45,7 +45,8 @@ function HomePage() {
                 onChange={(e) => setSearch(e.target.value)}
             />
             <select value={filter} onChange={(e) => setFilter(e.target.value)}>
-                <option value="">All Types</option>
+                
+                 <option value="">All Types</option>
                 {rocket.map((type) => (
                     <option key={type} value={type}>{type}</option>
                 )
@@ -75,7 +76,7 @@ function HomePage() {
                                 <td>{l.longitude}</td>
                                 <td>{l.name}</td>
                                 <td>
-                                    <Link to={`/launcher/${l._id}`}>See</Link>
+                                    <Link to={`/launcher/${l._id}`}>See Details</Link>
                                 </td>
 
                             </tr>

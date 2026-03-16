@@ -29,6 +29,7 @@ function LauncherDetailsPage() {
     }, [id])
 
     const handleDelete = async ()=>{
+        if(!window.confirm("You really need to delete this Launcher?")) return
         try {
             await deleteLauncher(id)
             navigate('/')
