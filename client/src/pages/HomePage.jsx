@@ -44,6 +44,8 @@ function HomePage() {
                 placeholder="Search By city ..."
                 onChange={(e) => setSearch(e.target.value)}
             />
+
+            Filter by Rocket Types :
             <select value={filter} onChange={(e) => setFilter(e.target.value)}>
                 
                  <option value="">All Types</option>
