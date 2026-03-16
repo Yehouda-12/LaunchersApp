@@ -5,8 +5,13 @@ import {Link} from "react-router";
 function Navbar(){
     return(
         <nav>
-            <Link to="/">Home</Link>
-            <Link to="/add">➕ Add Launcher</Link>
+
+            <Link to="/">
+            <button>Home</button>
+            </Link>
+            <Link to="/add">
+            <button>➕ Add Launcher</button>
+            </Link>
         </nav>
     )
 
