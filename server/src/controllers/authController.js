@@ -76,7 +76,8 @@ export const login = async (req, res) => {
             process.env.JWT_SECRET,
             { expiresIn: '24h' }
         )
-        res.status(200).json({ token, user_type: user.user_type, username: user.username })
+       
+        res.status(200).json({ token, user_type: user.user_type, username: user.username ,userID:user._id})
     } catch (error) {
         res.status(500).json({ message: error.message })
 
@@ -86,6 +87,7 @@ export const login = async (req, res) => {
 export const getUser = async (req, res) => {
     try {
         const user = await User.findById(req.user.id)
+       
         if (!user) {
             return res.status(404).json({ message: "User not found" })
 

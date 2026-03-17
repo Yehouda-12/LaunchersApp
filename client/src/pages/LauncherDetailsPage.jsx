@@ -32,7 +32,7 @@ function LauncherDetailsPage() {
         if(!window.confirm("You really need to delete this Launcher?")) return
         try {
             await deleteLauncher(id)
-            navigate('/')
+            navigate('/dashboard')
 
         } catch (error) {
             setError("Error in delete this launcher ")

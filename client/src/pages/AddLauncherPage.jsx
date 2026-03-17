@@ -57,20 +57,14 @@ function AddlauncherPage() {
             setLoading(true)
             setError('')
             const payload = { ...form }
-            // setForm({
-            //     name: "",
-            //     city: '',
-            //     rocketType: '',
-            //     latitude: '',
-            //     longitude: ''
-            // })
+          
             if (edit) {
                 await updateLauncher(id, payload)
                 navigate(`/launcher/${id}`)
 
             } else {
                 await createLauncher(payload)
-                navigate('/')
+                navigate('/dashboard')
             }
 
         } catch (err) {
