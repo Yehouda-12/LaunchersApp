@@ -20,8 +20,9 @@ const userShema = new mongoose.Schema({
     },
     user_type:{
          type:String,
-         enum:["admin","air","intelligence"],
-        required:[true,"user_type is required"]
+        
+        required:[true,"user_type is required"],
+      
 
     },
     last_login:{

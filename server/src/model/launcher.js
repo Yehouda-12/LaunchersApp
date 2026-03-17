@@ -25,6 +25,10 @@ const launcherSchema = new mongoose.Schema({
         type:String,
         required:[true,"name is required"]
 
+    },
+    destroyed:{
+        type:Boolean,
+        default:false
     }
 
 })
