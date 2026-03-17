@@ -46,9 +46,13 @@ export const deleteLaucher = async (req,res)=>{
 }
 export const updateLauncher = async (req,res)=>{
     try {
+        let update= req.body
+        if(req.user.user_type !=="intelligence"  ){
+            update ={destroyed:req.body.destroyed}
+        }
         const launcher = await Launcher.findByIdAndUpdate(
             req.params.id,
-            req.body,
+            update,
             {new:true,runValidators:true}
 
         )

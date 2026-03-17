@@ -8,7 +8,7 @@ router.get('/',verifyToken,getAllLaunchers)
 router.get('/:id',verifyToken,getLauncherById)
 router.post('/',verifyToken,verifyIntelligence,createLauncher)
 router.delete('/:id',verifyToken,verifyIntelligence,deleteLaucher)
-router.put('/:id',verifyToken,verifyIntelligence,updateLauncher)
+router.put('/:id',verifyToken,updateLauncher)
 
 
 export default router
