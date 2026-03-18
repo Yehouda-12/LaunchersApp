@@ -13,7 +13,7 @@ function HomePage() {
 
     useEffect(() => {
         const fetchLaunchers = async () => {
-            try {
+            try {  
                 setLoading(true)
                 setError('')
                 const data = await getAllLaunchers()
